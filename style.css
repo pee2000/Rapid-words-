@@ -1,85 +1,98 @@
-body {
-    font-family: 'Arial', sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
-    background-color: #e0f7fa;
+const words = [
+    // Fruits
+    "apple", "banana", "orange", "grape", "pineapple", "strawberry", "melon", "kiwi", "mango",
+    
+    // Technology
+    "computer", "algorithm", "database", "keyboard", "software", "hardware", "internet", "encryption", "network",
+
+    // Animals
+    "elephant", "giraffe", "tiger", "kangaroo", "dolphin", "penguin", "zebra", "lion", "panda",
+
+    // Sports
+    "soccer", "basketball", "tennis", "cricket", "baseball", "volleyball", "swimming", "boxing", "cycling",
+
+    // Science
+    "gravity", "atom", "molecule", "photosynthesis", "evolution", "magnetism", "electricity", "nucleus", "protein",
+
+    // Conversational Words
+    "hello", "please", "thank", "sorry", "yes", "no", "maybe", "goodbye", "happy", "morning", "night", "friend", 
+    "family", "love", "help", "wait", "stop", "go", "why", "because", "always", "never", "soon", "yesterday", "tomorrow"
+];
+
+let score = 0;
+let time = 15;
+let timer;
+let currentWord;
+
+const wordDisplay = document.getElementById("word-display");
+const wordInput = document.getElementById("word-input");
+const timerDisplay = document.getElementById("timer");
+const scoreDisplay = document.getElementById("score");
+const messageDisplay = document.getElementById("message");
+const startButton = document.getElementById("start-button");
+
+const backgroundMusic = document.getElementById("background-music");
+
+startButton.addEventListener("click", startGame);
+wordInput.addEventListener("input", checkInput);
+
+function startGame() {
+    backgroundMusic.play();  // Play background music
+    backgroundMusic.volume = 0.5;  // Set volume to 50%
+    score = 0;
+    time = 15;
+    wordInput.value = "";
+    wordInput.disabled = false;
+    startButton.disabled = true;
+    messageDisplay.textContent = "";
+    scoreDisplay.textContent = `Score: ${score}`;
+    timerDisplay.textContent = `Time: ${time}s`;
+
+    nextWord();
+    startTimer();
 }
 
-.game-container {
-    text-align: center;
-    padding: 30px;
-    border-radius: 15px;
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
-    width: 320px;
-    background-image: url('https://i.postimg.cc/18SrGjJ1/IMG-20241023-WA0000.jpg');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    color: white;
-    position: relative;
+function nextWord() {
+    currentWord = words[Math.floor(Math.random() * words.length)];
+
+    // Remove one letter from the current word for the hint
+    let hintWord = currentWord.split('');
+    let randomIndex = Math.floor(Math.random() * hintWord.length);
+    hintWord[randomIndex] = '_';  // Replace one letter with an underscore
+    wordDisplay.textContent = hintWord.join('');
 }
 
-h1 {
-    font-size: 2.2em;
-    color: #ffffff;
-    margin-bottom: 20px;
-    text-shadow: 2px 2px 4px #000000;
+function checkInput() {
+    if (wordInput.value.toLowerCase() === currentWord.toLowerCase()) {
+        score++;
+        scoreDisplay.textContent = `Score: ${score}`;
+        wordInput.value = "";
+        nextWord();
+        resetTimer();
+    }
 }
 
-#word-display {
-    font-size: 1.8em;
-    font-weight: bold;
-    color: #ffffff;
-    margin: 25px 0;
-    padding: 15px;
-    border: 2px solid #009688;
-    border-radius: 10px;
-    background-color: green;  /* Green background for hint box */
+function startTimer() {
+    timer = setInterval(() => {
+        time--;
+        timerDisplay.textContent = `Time: ${time}s`;
+        if (time === 0) {
+            endGame();
+        }
+    }, 1000);
 }
 
-#word-input {
-    width: 100%;
-    padding: 12px;
-    font-size: 1.1em;
-    margin-bottom: 15px;
-    border: 2px solid #009688;
-    border-radius: 10px;
-    background-color: purple;  /* Purple background for typing box */
-    color: #ffffff;
+function resetTimer() {
+    clearInterval(timer);
+    time = 15;
+    timerDisplay.textContent = `Time: ${time}s`;
+    startTimer();
 }
 
-#timer, #score {
-    font-size: 1.3em;
-    margin: 12px 0;
-    color: #ffffff;
-    text-shadow: 1px 1px 3px #000000;
-}
-
-#message {
-    margin-top: 20px;
-    font-size: 1.2em;
-    color: #ffffff;
-    text-shadow: 1px 1px 3px #000000;
-}
-
-button {
-    padding: 12px 25px;
-    background-color: #00796b;
-    color: white;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    font-size: 1.1em;
-}
-
-button:hover {
-    background-color: #004d40;
-}
-
-button:disabled {
-    background-color: #9e9e9e;
-    cursor: not-allowed;
+function endGame() {
+    clearInterval(timer);
+    wordInput.disabled = true;
+    startButton.disabled = false;
+    messageDisplay.textContent = `Game Over! Your score is ${score}.`;
+    backgroundMusic.pause();  // Stop background music
 }
