@@ -4,26 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rapid Words</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div id="game-container">
+    <div class="game-container">
         <h1>Rapid Words</h1>
-        <div id="stats">
-            <span id="score" class="green-text">Score: 0</span>
-            <span id="timer">Time: 15s</span>
-        </div>
-        <p id="word-display">Press Start to Begin</p>
-        <input type="text" id="word-input" placeholder="Type the word here...">
+        <div id="word-display">_ _ _ _ _</div>
+        <input type="text" id="word-input" placeholder="Type here..." disabled>
+        <div id="timer">Time: 15s</div>
+        <div id="score">Score: 0</div>
+        <div id="message"></div>
         <button id="start-button">Start Game</button>
-        <p id="message"></p>
+        
+        <!-- Background Music -->
+        <audio id="background-music" src="[FREE]_Acoustic_Guitar_Samples_in_G_[Loops_for_Hip_Hop_Pop_R_b_and_Trap_Music](256k).mp3" loop></audio>
     </div>
-
-    <!-- Background Music -->
-    <audio id="background-music" autoplay loop>
-        <source src="[FREE]_Acoustic_Guitar_Samples_in_G_[Loops_for_Hip_Hop_Pop_R_b_and_Trap_Music](256k).mp3" type="audio/mpeg">
-        Your browser does not support the audio element.
-    </audio>
 
     <script src="script.js"></script>
 </body>
