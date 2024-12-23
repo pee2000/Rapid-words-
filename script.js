@@ -16,15 +16,6 @@ const startButton = document.getElementById("start-button");
 
 const backgroundMusic = document.getElementById("background-music");
 
-// Play music only after user interaction
-backgroundMusic.addEventListener('canplaythrough', () => {
-    console.log("Background music is ready to play.");
-    backgroundMusic.volume = 0.5;
-});
-backgroundMusic.addEventListener('error', (e) => {
-    console.error("Error loading background music:", e);
-});
-
 startButton.addEventListener("click", startGame);
 wordInput.addEventListener("input", checkInput);
 
