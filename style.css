@@ -12,15 +12,16 @@ body {
 }
 
 .game-container {
-    max-width: 600px;
-    width: 90%;
-    background: url('IMG-20241023-WA0000.jpg') no-repeat center center/cover; /* Background image for the game container */
+    max-width: 90%; /* Adjust for mobile responsiveness */
+    width: 100%;
+    background: url('IMG-20241023-WA0000.jpg') no-repeat center center/cover; /* Background image */
     border-radius: 10px;
     padding: 20px;
     text-align: center;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
     backdrop-filter: blur(5px);
     border: 2px solid #fff;
+    margin: 10px; /* Prevent edges from cutting off */
 }
 
 #word-display {
@@ -40,9 +41,16 @@ body {
     color: #34495e;
 }
 
-#timer, #score {
+#timer {
     font-size: 1.2rem;
     margin: 10px 0;
+    color: #fff;
+}
+
+#score {
+    font-size: 1.2rem;
+    margin: 10px 0;
+    color: #16a085; /* Green for the score */
 }
 
 button {
@@ -66,7 +74,6 @@ button:hover {
     margin: 20px 0;
 }
 
-/* General Background without Image */
 body::before {
     content: "";
     position: absolute;
