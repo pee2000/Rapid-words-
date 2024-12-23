@@ -3,25 +3,43 @@ const words = [
     "Abraham", "Moses", "Jesus", "Paul", "David", "Solomon", "Genesis", "Exodus",
     "Revelation", "Faith", "Grace", "Salvation", "Prayer", "Worship", "Heaven",
     "Resurrection", "Messiah", "Prophet", "Judah", "Righteousness", "Covenant",
+    "Commandments", "Scripture", "Kingdom", "Anointing",
 
     // Conversational Words
     "Hello", "Welcome", "Goodbye", "Thanks", "Please", "Friend", "Love", "Joy",
+    "Happy", "Family", "Life", "Peace", "Hope", "Light", "Strong", "Dream",
+    "Power", "Win", "Smile", "Fun",
 
     // Psychology Words
     "Behavior", "Cognition", "Emotion", "Perception", "Memory", "Learning",
-    "Personality", "Therapy", "Stress", "Motivation", "Consciousness", "Mindset",
+    "Personality", "Therapy", "Stress", "Motivation", "Consciousness", "Intelligence",
+    "Trauma", "Mindset", "Belief", "Habits", "Self-esteem", "Anxiety", "Depression",
+    "Counseling", "Neuroscience",
 
     // Communication Words
     "Message", "Media", "Signal", "Dialogue", "Feedback", "Conversation", "Language",
+    "Listening", "Speaking", "Writing", "Broadcast", "Speech", "Presentation", "Public",
+    "Connection", "Information", "Negotiation", "Audience", "Expression", "Tone",
 
     // Science Words
-    "Atom", "Molecule", "Physics", "Chemistry", "Biology", "Energy", "Galaxy",
+    "Atom", "Molecule", "Physics", "Chemistry", "Biology", "Astronomy", "Energy",
+    "Gravity", "Evolution", "Ecosystem", "Experiment", "Hypothesis", "Observation",
+    "Data", "Theory", "Force", "Light", "Matter", "Electron", "Planet", "Galaxy",
+
+    // Government Words
+    "Policy", "Legislation", "Democracy", "Republic", "Congress", "Parliament",
+    "President", "Election", "Senate", "Vote", "Constitution", "Court", "Justice",
+    "Law", "Rights", "Freedom", "Citizen", "State", "Nation", "Budget", "Tax",
 
     // Music Words
     "Melody", "Harmony", "Rhythm", "Chord", "Note", "Scale", "Tempo", "Pitch",
+    "Dynamics", "Composition", "Instrument", "Guitar", "Piano", "Drum", "Bass",
+    "Violin", "Flute", "Singer", "Choir", "Orchestra", "Symphony", "Opera",
 
     // History Words
-    "Empire", "Revolution", "War", "Dynasty", "Civilization", "Treaty", "Victory"
+    "Empire", "Revolution", "War", "Dynasty", "Civilization", "Ancient", "Medieval",
+    "Modern", "Renaissance", "Colony", "Monarchy", "Treaty", "Artifact", "Exploration",
+    "Archaeology", "Industrial", "Conquest", "Independence", "Victory", "Defeat"
 ];
 
 let currentWord = "";
