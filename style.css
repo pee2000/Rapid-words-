@@ -6,7 +6,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    background: linear-gradient(to bottom, #6a11cb, #2575fc); /* Gradient background */
+    background: linear-gradient(to bottom, #6a11cb, #2575fc); /* Gradient for vibrancy */
     color: #fff;
     overflow: hidden;
 }
@@ -66,7 +66,7 @@ button:hover {
     margin: 20px 0;
 }
 
-/* Add the background image with transparency */
+/* Background Image Integration */
 body::before {
     content: "";
     position: absolute;
@@ -75,6 +75,6 @@ body::before {
     width: 100%;
     height: 100%;
     background: url('https://postimg.cc/18SrGjJ1') no-repeat center center/cover;
-    opacity: 0.5; /* Transparency for image */
+    opacity: 0.5; /* Add transparency for blending */
     z-index: -1;
 }
