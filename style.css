@@ -7,14 +7,14 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background: linear-gradient(to right, #6a11cb, #2575fc);
+    background: linear-gradient(to right, #6a11cb, #2575fc); /* Nice gradient background */
     color: #fff;
 }
 
 /* Game Container */
 #game-container {
     text-align: center;
-    background-image: url('IMG-20241023-WA0000.jpg');
+    background-image: url('IMG-20241023-WA0000.jpg'); /* Container background image */
     background-size: cover;
     background-position: center;
     border-radius: 10px;
@@ -37,7 +37,7 @@ body {
 }
 
 .green-text {
-    color: #00ff00;
+    color: #00ff00; /* Green color for score */
 }
 
 #word-display {
@@ -73,4 +73,17 @@ body {
 
 #start-button:hover {
     background-color: #00cc00;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    #game-container {
+        width: 95%;
+        height: auto;
+        padding: 10px;
+    }
+
+    #word-input, #start-button {
+        width: 100%;
+    }
 }
