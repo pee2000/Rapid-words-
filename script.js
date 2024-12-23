@@ -1,56 +1,45 @@
 const words = [
     // Biblical Words
     "Abraham", "Moses", "Jesus", "Paul", "David", "Solomon", "Genesis", "Exodus",
-    "Revelation", "Disciple", "Faith", "Grace", "Salvation", "Trinity", "Gospel",
-    "Jerusalem", "Bethlehem", "Commandments", "Prayer", "Worship", "Heaven",
-    "Resurrection", "Messiah", "Apostle", "Epistle", "Prophet", "Judah", "Righteousness",
-    "Covenant", "Ark", "Miracle", "Scripture", "Fellowship", "Kingdom", "Anointing",
+    "Revelation", "Faith", "Grace", "Salvation", "Prayer", "Worship", "Heaven",
+    "Resurrection", "Messiah", "Prophet", "Judah", "Righteousness", "Covenant",
+    "Commandments", "Scripture", "Kingdom", "Anointing",
 
     // Conversational Words
     "Hello", "Welcome", "Goodbye", "Thanks", "Please", "Friend", "Love", "Joy",
-    "Happy", "Family", "Life", "Learn", "Peace", "Hope", "Light", "Work", "Strong",
-    "Dream", "Power", "Quick", "Smart", "Game", "Play", "Kind", "Good", "Trust",
-    "Fast", "Win", "Smile", "Fun",
+    "Happy", "Family", "Life", "Peace", "Hope", "Light", "Strong", "Dream",
+    "Power", "Win", "Smile", "Fun",
 
     // Psychology Words
     "Behavior", "Cognition", "Emotion", "Perception", "Memory", "Learning",
     "Personality", "Therapy", "Stress", "Motivation", "Consciousness", "Intelligence",
     "Trauma", "Mindset", "Belief", "Habits", "Self-esteem", "Anxiety", "Depression",
-    "Counseling", "Neuroscience", "Development", "Psychology", "Behavioral",
+    "Counseling", "Neuroscience",
 
     // Communication Words
     "Message", "Media", "Signal", "Dialogue", "Feedback", "Conversation", "Language",
-    "Interaction", "Listening", "Speaking", "Writing", "Broadcast", "Speech", "Presentation",
-    "Public", "Connection", "Information", "Negotiation", "Audience", "Context",
-    "Expression", "Tone", "Gesture", "Verbal", "Nonverbal", "Response", "Argument",
-    "Persuasion", "Interpretation",
+    "Listening", "Speaking", "Writing", "Broadcast", "Speech", "Presentation", "Public",
+    "Connection", "Information", "Negotiation", "Audience", "Expression", "Tone",
 
     // Science Words
     "Atom", "Molecule", "Physics", "Chemistry", "Biology", "Astronomy", "Energy",
-    "Gravity", "Evolution", "Ecosystem", "Climate", "Experiment", "Hypothesis",
-    "Observation", "Data", "Theory", "Force", "Light", "Matter", "Electron", "Planet",
-    "Galaxy", "Cell", "Organism", "Genetics", "Telescope", "Microscope", "Temperature",
-    "Pressure", "Density", "Spectrum",
+    "Gravity", "Evolution", "Ecosystem", "Experiment", "Hypothesis", "Observation",
+    "Data", "Theory", "Force", "Light", "Matter", "Electron", "Planet", "Galaxy",
 
     // Government Words
     "Policy", "Legislation", "Democracy", "Republic", "Congress", "Parliament",
-    "President", "Prime", "Minister", "Government", "Election", "Senate", "Vote",
-    "Constitution", "Court", "Justice", "Law", "Rights", "Freedom", "Citizen", "State",
-    "Nation", "Public", "Budget", "Tax", "Security", "Diplomacy", "Campaign",
-    "International", "Defense",
+    "President", "Election", "Senate", "Vote", "Constitution", "Court", "Justice",
+    "Law", "Rights", "Freedom", "Citizen", "State", "Nation", "Budget", "Tax",
 
     // Music Words
     "Melody", "Harmony", "Rhythm", "Chord", "Note", "Scale", "Tempo", "Pitch",
     "Dynamics", "Composition", "Instrument", "Guitar", "Piano", "Drum", "Bass",
-    "Violin", "Flute", "Singer", "Choir", "Orchestra", "Symphony", "Opera", "Concert",
-    "Lyric", "Band", "Song", "Album", "Genre", "Tune", "Beats",
+    "Violin", "Flute", "Singer", "Choir", "Orchestra", "Symphony", "Opera",
 
     // History Words
     "Empire", "Revolution", "War", "Dynasty", "Civilization", "Ancient", "Medieval",
     "Modern", "Renaissance", "Colony", "Monarchy", "Treaty", "Artifact", "Exploration",
-    "Archaeology", "Industrial", "Era", "Conquest", "Alliance", "Independence", "Victory",
-    "Defeat", "Constitution", "Reformation", "Protest", "Battle", "King", "Queen",
-    "Legacy", "Discovery", "Trade"
+    "Archaeology", "Industrial", "Conquest", "Independence", "Victory", "Defeat"
 ];
 
 let currentWord = "";
@@ -63,6 +52,9 @@ const wordInput = document.getElementById("word-input");
 const timer = document.getElementById("timer");
 const scoreDisplay = document.getElementById("score");
 const message = document.getElementById("message");
+const startButton = document.getElementById("start-button");
+
+startButton.addEventListener("click", startGame);
 
 function startGame() {
     score = 0;
@@ -70,9 +62,19 @@ function startGame() {
     isPlaying = true;
     wordInput.value = "";
     wordInput.focus();
+    message.textContent = "";
+    scoreDisplay.textContent = "Score: 0";
     showWord();
-    setInterval(countdown, 1000);
-    setInterval(checkStatus, 50);
+    const countdownInterval = setInterval(() => {
+        if (time > 0) {
+            time--;
+        } else {
+            clearInterval(countdownInterval);
+            isPlaying = false;
+            message.textContent = "Game Over!";
+        }
+        timer.textContent = `Time: ${time}s`;
+    }, 1000);
 }
 
 function showWord() {
@@ -81,24 +83,8 @@ function showWord() {
     wordDisplay.textContent = currentWord;
 }
 
-function countdown() {
-    if (time > 0) {
-        time--;
-    } else if (time === 0) {
-        isPlaying = false;
-    }
-    timer.textContent = `Time: ${time}s`;
-}
-
-function checkStatus() {
-    if (!isPlaying && time === 0) {
-        message.textContent = "Game Over!";
-        scoreDisplay.textContent = `Score: ${score}`;
-    }
-}
-
 wordInput.addEventListener("input", () => {
-    if (wordInput.value === currentWord) {
+    if (wordInput.value.toLowerCase() === currentWord.toLowerCase()) {
         message.textContent = "Correct!";
         score++;
         scoreDisplay.textContent = `Score: ${score}`;
