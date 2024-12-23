@@ -14,7 +14,7 @@ body {
 .game-container {
     max-width: 600px;
     width: 90%;
-    background: url('IMG-20241023-WA0000.jpg') no-repeat center center/cover; /* Background image */
+    background: url('IMG-20241023-WA0000.jpg') no-repeat center center/cover; /* Background image for the game container */
     border-radius: 10px;
     padding: 20px;
     text-align: center;
@@ -66,7 +66,7 @@ button:hover {
     margin: 20px 0;
 }
 
-/* General Background Image */
+/* General Background without Image */
 body::before {
     content: "";
     position: absolute;
