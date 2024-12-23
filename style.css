@@ -1,87 +1,89 @@
+/* General Styles */
 body {
-    font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    height: 100vh;
+    font-family: Arial, sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;
-    background: linear-gradient(to bottom, #6a11cb, #2575fc); /* Gradient for vibrancy */
+    height: 100vh;
+    background: linear-gradient(to right, #6a11cb, #2575fc); /* Gradient background */
     color: #fff;
+}
+
+/* Game Container */
+#game-container {
+    text-align: center;
+    background-image: url('IMG-20241023-WA0000.jpg'); /* Background image */
+    background-size: cover;
+    background-position: center;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    padding: 20px;
+    max-width: 90%;
+    width: 400px;
+    height: 70%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     overflow: hidden;
 }
 
-.game-container {
-    max-width: 90%; /* Adjust for mobile responsiveness */
-    width: 100%;
-    background: url('IMG-20241023-WA0000.jpg') no-repeat center center/cover; /* Background image */
-    border-radius: 10px;
-    padding: 20px;
-    text-align: center;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-    backdrop-filter: blur(5px);
-    border: 2px solid #fff;
-    margin: 10px; /* Prevent edges from cutting off */
+/* Text Elements */
+#stats {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.green-text {
+    color: #00ff00; /* Green color for score */
 }
 
 #word-display {
-    font-size: 2rem;
+    font-size: 24px;
     font-weight: bold;
-    color: #34495e;
-    margin: 20px 0;
-}
-
-#word-input {
-    font-size: 1.5rem;
-    padding: 10px;
-    width: 80%;
-    border: 2px solid #16a085;
-    border-radius: 5px;
-    background-color: #f3f9f9;
-    color: #34495e;
-}
-
-#timer {
-    font-size: 1.2rem;
-    margin: 10px 0;
-    color: #fff;
-}
-
-#score {
-    font-size: 1.2rem;
-    margin: 10px 0;
-    color: #16a085; /* Green for the score */
-}
-
-button {
-    background-color: #16a085;
-    color: white;
-    padding: 10px 20px;
-    font-size: 1.2rem;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-button:hover {
-    background-color: #1abc9c;
+    margin-bottom: 20px;
 }
 
 #message {
-    font-size: 1.5rem;
-    color: #e74c3c;
-    margin: 20px 0;
+    font-size: 20px;
+    margin-top: 20px;
 }
 
-body::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(to bottom, #6a11cb, #2575fc); /* Fallback gradient */
-    opacity: 0.5;
-    z-index: -1;
+/* Input and Button */
+#word-input {
+    font-size: 18px;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    width: 90%;
+    margin-bottom: 20px;
+}
+
+#start-button {
+    background-color: #00ff00;
+    color: #000;
+    font-size: 18px;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#start-button:hover {
+    background-color: #00cc00;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    #game-container {
+        width: 95%;
+        height: auto;
+        padding: 10px;
+    }
+
+    #word-input, #start-button {
+        width: 100%;
+    }
 }
